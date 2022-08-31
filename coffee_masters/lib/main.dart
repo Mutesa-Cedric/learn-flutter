@@ -3,6 +3,8 @@ import 'package:coffee_masters/pages/offerspage.dart';
 import 'package:coffee_masters/pages/orderspage.dart';
 import 'package:flutter/material.dart';
 
+import 'datamanager.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -87,18 +89,23 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int selectedTab = 0;
+  var dataManager = DataManager();
   @override
   Widget build(BuildContext context) {
     Widget selectedPage = const Text("Home page");
     switch (selectedTab) {
       case 0:
-        selectedPage = const MenuPage();
+        selectedPage = MenuPage(
+          dataManager: dataManager,
+        );
         break;
       case 1:
         selectedPage = const OffersPage();
         break;
       case 2:
-        selectedPage = const OrdersPage();
+        selectedPage = OrdersPage(
+          dataManager: dataManager,
+        );
         break;
     }
     return Scaffold(
