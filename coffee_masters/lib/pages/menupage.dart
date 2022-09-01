@@ -29,9 +29,13 @@ class MenuPage extends StatelessWidget {
                         physics: const ClampingScrollPhysics(),
                         itemCount: categories[index].products.length,
                         itemBuilder: ((context, productIndex) {
+                          var product =
+                              categories[index].products[productIndex];
                           return ProductItem(
-                              product: categories[index].products[productIndex],
-                              onAdd: () {});
+                              product: product,
+                              onAdd: (addedProduct) {
+                                dataManager.cartAdd(addedProduct);
+                              });
                         }))
                   ],
                 );
@@ -79,7 +83,7 @@ class ProductItem extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("\$${product.price}"),
+                      child: Text("\$${product.price.toStringAsFixed(2)}"),
                     ),
                   ],
                 ),
