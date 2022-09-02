@@ -70,8 +70,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Cofee masters',
       theme: ThemeData(
         primarySwatch: Colors.brown,
@@ -111,7 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('images/logo.png'),
+        title: Center(
+          child: Image.asset('images/logo.png'),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedTab,
